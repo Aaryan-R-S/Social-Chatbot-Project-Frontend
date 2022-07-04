@@ -1,0 +1,25 @@
+%% Frontend %%
+☐ npx create-react-app %appName% [OR npx create-react-app .] [OR npm create-react-app %appName%]
+☐ npm run start
+☐ npm run build
+☐ npm install react-router-dom@5.2.0
+
+%% To Do %%
+    ☐ Input statements check words are correct or not
+    {
+        Check Micsoft module for offline text-to-speech output
+        For checking valid words - https://www.npmjs.com/package/check-if-word
+        
+        const checkStatements = (myStatement)=>{
+            var checkWord = require('check-if-word');
+            let myWords = myStatement.match(/\b(\w+)\b/g);
+            let words = checkWord('en');
+            return (words.getValidWords(myWords).length >= myWords.length/2);
+        };
+    }
+    ☐ Design everything other than chatbox
+    ☐ Design chatbox
+    ☐ Make "repository" on GitHub
+    ☐ Online Database "MongoDB Atlas"
+    ☐ Deploy on Heroku OR "IIITD server"
+    ☐ Add "questions" and "videos" to database
