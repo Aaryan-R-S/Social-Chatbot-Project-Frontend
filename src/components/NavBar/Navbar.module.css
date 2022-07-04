@@ -1,0 +1,26 @@
+.bg{
+    background-color: transparent;
+}
+
+.navbar-brand{
+    font-family: Inter;
+    color : black !important;
+    font-size : 4vh !important;
+    font-weight : 800;
+}
+
+.navbar-item{
+    font-family : Inter;
+    color : black;
+    font-size : 2.5vh;
+    font-weight : 400;
+    text-decoration: none;
+}
+
+.dropdown-item{
+    font-family : Inter;
+    color : black;
+    font-size : 2vh;
+    font-weight : 400;
+    text-decoration: none;
+};
