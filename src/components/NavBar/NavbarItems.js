@@ -6,10 +6,6 @@ export const MenuItems = [
     {
         'title' : 'Videos',
         'url' : '/video',
-    },
-    {
-        'title' : 'Text',
-        'url' : '/text',
-    },
+    }
 ];
 

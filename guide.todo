@@ -17,8 +17,7 @@
             return (words.getValidWords(myWords).length >= myWords.length/2);
         };
     }
-    ☐ Design everything other than chatbox
-    ☐ Design chatbox
+    ☐ Responsiveness
     ☐ Make "repository" on GitHub
     ☐ Online Database "MongoDB Atlas"
     ☐ Deploy on Heroku OR "IIITD server"

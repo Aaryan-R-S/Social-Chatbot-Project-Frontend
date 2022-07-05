@@ -1,9 +1,10 @@
 import { React } from 'react';
 import {Container, Row } from 'react-bootstrap';
-
+import yoga from '../images/yoga.jpg'
 import CardInfo from '../../Card/CardInfo';
 
 const Exercise = () => {
+    const largeHeading = "Exercises"
 
     const headings = [
         'Stretching: Focus on flexibility',
@@ -28,14 +29,16 @@ const Exercise = () => {
 
     return (
         <div>
-            <Container 
-                style = {{padding : '5%'}}>
-
+            <h1 style={{textAlign:"center", fontSize:"3rem", marginTop:"2rem", marginBottom:"1rem"}}>{largeHeading}</h1>
+            <div style={{textAlign:"center", margin:"auto"}}>
+                <img src={yoga} alt="food_image" height="auto" width="600px"/>
+            </div>
+            <Container  style = {{padding : '5%', paddingTop:'0%'}}>
                 { headings.map( (heading, index) => {
                     const paragraph = content[index];
                     return (
 
-                    <Row
+                    <Row key={heading}
                         style={{
                             padding:'1%',
                         }}>

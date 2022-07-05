@@ -1,44 +1,48 @@
-import { React, useState } from 'react';
+import { React, useState} from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useHistory } from "react-router-dom";
-
-import counsellingImage from '../../images/webbg.jpg';
 import CardInfo from '../Card/CardInfo.js';
 import { intro } from './HomePageContent.js';
 import ServiceInfo from './ServiceInfo/ServiceInfo.js';
-import {
-    container
-} from './HomePageStyle.js';
-import {
-    buttonStyle, modalButtonStyle, modalButtonStyleHover,
-} from '../NavBar/NavBarButtons/NavBarButtonStyle.js';
+import counsellingImage from '../../images/webbg.jpg';
+import { container } from './HomePageStyle.js';
+import { modalButtonStyle, modalButtonStyleHover } from '../NavBar/NavBarButtons/NavBarButtonStyle.js';
 
 const HomePage = () => {
+    const [hover1, setHover1] = useState();
+    const [hover2, setHover2] = useState();
 
-    const history = useHistory();
-
-    const handleClick = (value) => {
-        setSelected(value);
-        history.push(value);
+    const handleMouseIn1 = () => {
+        setHover1(true);
     };
-    const [selected, setSelected] = useState('');
 
+    const handleMouseOut1 = () => {
+        setHover1(false);
+    };
+
+    const handleMouseIn2 = () => {
+        setHover2(true);
+    };
+
+    const handleMouseOut2= () => {
+        setHover2(false);
+    };
 
     return (
-        <div class={container}>
+        <div className={container}>
             <Container fluid>
                 <Row >
                     <ServiceInfo />
                 </Row>
-                {/* <Row style={{backgroundColor : "#dfebe9"}}>
-                    <CardInfo 
-                        title={'Services Provided by Us'} 
+                <Row style={{backgroundColor : "#dfebe9"}}>
+                    <CardInfo
+                        title={'About our Portal'} 
                         text = {''}/>
-                </Row> */}
-                <Row style={{marginTop : '0px'}}>
-                    <Col>
+                </Row>
+                <Row>
+                    <Col style={{"marginTop":"5rem"}}>
                         <CardInfo 
-                            title={'About Our Portal'} 
+                            title={''} 
                             text = {intro}/>
                     </Col>                    
                     <Col>
@@ -48,16 +52,18 @@ const HomePage = () => {
                 <Row style={{margin :"5%"}}>
                     <Col>
                         <Button 
+                            as={Link} to='terms'
                             size="lg" 
-                            onClick={()=>{handleClick("terms")}}
-                            style={selected === "Terms and Conditions" ? modalButtonStyleHover : modalButtonStyle} 
+                            style={hover1?modalButtonStyleHover:modalButtonStyle} 
+                            onMouseOver={handleMouseIn1} onMouseOut={handleMouseOut1}
                             variant="default">Terms and Conditions</Button>
                     </Col>
                     <Col>
                         <Button 
+                            as={Link} to='policy'
                             size="lg" 
-                            onClick={()=>{handleClick("policy")}}
-                            style={selected === "Privacy Policy" ? modalButtonStyleHover : modalButtonStyle} 
+                            style={hover2?modalButtonStyleHover:modalButtonStyle} 
+                            onMouseOver={handleMouseIn2} onMouseOut={handleMouseOut2}
                             variant="default">Privacy Policy</Button>
                     </Col>
                 </Row>

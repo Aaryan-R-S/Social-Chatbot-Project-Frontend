@@ -1,78 +1,44 @@
 import {React} from 'react';
 import {Form, Button} from 'react-bootstrap';
-// import { useHistory } from "react-router-dom";
-// import { useDispatch } from 'react-redux';
-// import { userAuthenticationOptions } from '../../../store/userAuthenticationSlice.js';
 
-
+// Make login attempt
+// If successful show success toast and store authToken
+// else show failure toast and clear form
 
 const AdminLoginForm = () => {
-
-    // const history = useHistory();
-    // const dispatch = useDispatch();
 
     const adminLoginHandler = (event) => {
         event.preventDefault();
         const email = event.target[0].value;
         const password = event.target[1].value;
-        // fetch('http://192.168.1.187:8010/login/', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //       'email' : email,
-        //       'password' : password
-        //   }),
-        //     headers: {"Content-type": "application/json; charset=UTF-8"}     
-        //   }).then(function(response) {
-        //       return response.json()
-        //   }).then(function(result){
-        //       const userId = result['result']['userId'];
-        //       const name = result['result']['name'];
-        //       const symptoms = result['result']['symptoms']
-        //     //   dispatch(userAuthenticationOptions.setName(name));
-        //     //   dispatch(userAuthenticationOptions.setEmailId(email));
-        //     //   dispatch(userAuthenticationOptions.setPassword(password));
-        //     //   dispatch(userAuthenticationOptions.setUserId(userId));
-        //     //   dispatch(userAuthenticationOptions.setSymptoms(symptoms));
-  
-        //   }).catch(function(response){
-        //       console.log("error")
-        //   });
-
-        // console.log(email, password);
-        // let path = `admin`; 
-        // history.push(path);
-
+        console.log(email, password);
     };
 
     return (
-        <Form
-            onSubmit = {adminLoginHandler} 
-            style={{
-                fontFamily : 'Open Sans',
-            }}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
+        <Form onSubmit = {adminLoginHandler} style={{ fontFamily : 'Open Sans' }}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Email ID</Form.Label>
+                <Form.Control type="email" placeholder="Enter your email id" />
+            </Form.Group>
+            
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Enter your password" />
+            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Button 
-                    style={{    
-                        backgroundColor : "#dfebe9",
-                        fontFamily : "Inter",
-                        color : "black",
-                        borderColor: "transparent",
-                        fontSize : "2vh",
-                        fontWeight : "300",
-                    }}
-                    type='submit'
-                    >
-                    Login
-                </Button>
-            </Form>
+            <Button style={{    
+                    backgroundColor : "#dfebe9",
+                    fontFamily : "Inter",
+                    color : "black",
+                    borderColor: "transparent",
+                    fontSize : "1.3rem",
+                    fontWeight : "300",
+                }}
+                type='submit'
+                >
+                Login
+            </Button>
+        </Form>
     );
 };
 

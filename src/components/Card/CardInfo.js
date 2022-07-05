@@ -1,5 +1,5 @@
 import { React } from 'react';
-import {  Card } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 import {
     cardStyle,
@@ -8,8 +8,7 @@ import {
 } from './CardInfoStyle.js';
 
 const CardInfo = ({title, text}) => {
-
-
+    
     return (
         <div>
             <Card style={cardStyle}>                    

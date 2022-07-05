@@ -1,10 +1,10 @@
 import { React } from 'react';
 import {Container, Row } from 'react-bootstrap';
-
+import food from '../images/food.jpg'
 import CardInfo from '../../Card/CardInfo';
 
 const Diet = () => {
-
+    const largeHeading = "Recommended Diet"
     const headings = [
         'Base your meals on higher fibre starchy carbohydrates',
         'Eat lots of fruit and veg',
@@ -28,14 +28,18 @@ const Diet = () => {
 
     return (
         <div>
+            <h1 style={{textAlign:"center", fontSize:"3rem", marginTop:"2rem", marginBottom:"1rem"}}>{largeHeading}</h1>
+            <div style={{textAlign:"center", margin:"auto"}}>
+                <img src={food} alt="food_image" height="auto" width="600px"/>
+            </div>
             <Container 
-                style = {{padding : '5%'}}>
+                style = {{padding : '5%', paddingTop:'1%'}}>
 
                 { headings.map( (heading, index) => {
                     const paragraph = content[index];
                     return (
 
-                    <Row
+                    <Row key={heading}
                         style={{
                             padding: '1%',
                         }}>

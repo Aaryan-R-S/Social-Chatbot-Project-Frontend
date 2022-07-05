@@ -1,18 +1,11 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { useState } from 'react';
-
 import styles from './Navbar.module.css'; 
-import { 
-    MenuItems,
-} from './NavbarItems';
+import { MenuItems } from './NavbarItems';
 import NavBarButtons from './NavBarButtons/NavBarButtons';
 import brandIcon from './images/robot-hand.png';
 
 const NavBar = () => {
-
-    // const user = useSelector(state => state.user);
 
     return (
         <Navbar collapseOnSelect expand="lg" className={styles['bg']}>
@@ -22,6 +15,7 @@ const NavBar = () => {
                     <img src={brandIcon} alt={"Brand Icon"} height="10%" width="10%" style={{marginRight : '5%'}}/>
                       Social Chatbot
                 </Navbar.Brand>
+
                 <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>
                     {MenuItems.map( (item, index) => {
                         return (
@@ -31,6 +25,7 @@ const NavBar = () => {
                             </Nav.Link>
                         </Nav>);
                     })}
+
                     <NavDropdown title={<span className={styles['navbar-item']}> Suggestions </span>}>
                         <Nav className={styles['dropdown-item']}>
                             <Nav.Link as={Link} to='diet'>
@@ -43,7 +38,8 @@ const NavBar = () => {
                             </Nav.Link>
                         </Nav>
                     </NavDropdown>
-                    <NavBarButtons />
+                    <NavBarButtons/>
+
                 </Navbar.Collapse>
 
             </Container>

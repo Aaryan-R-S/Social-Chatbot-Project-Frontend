@@ -40,7 +40,11 @@ export const chatbotInfo = `AI powered chatbot which suggests remedies and advic
 
 export const helpTitle = 'Self-Help Material';
 
-export const helpInfo = `We provide a vast number of self-help videos, audios, stories that helps people to get relief.`;
+export const helpInfo = `We provide a vast number of self-help videos, audios, and suggestions like diets and exercises that helps people to get relief.`;
+
+export const dashboardTitle = 'Personalized Dashboard';
+
+export const dashboardInfo = `View or delete submitted chats on the dashboard. Submitted chats help Mental Health experts to get some knowldege of you before an offline counseling session.`;
 
 export const prevIconStyle = {
     height : '50%',
