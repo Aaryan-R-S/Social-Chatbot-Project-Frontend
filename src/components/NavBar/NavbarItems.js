@@ -5,7 +5,7 @@ export const MenuItems = [
     },
     {
         'title' : 'Videos',
-        'url' : '/video',
+        'url' : '/videos',
     }
 ];
 

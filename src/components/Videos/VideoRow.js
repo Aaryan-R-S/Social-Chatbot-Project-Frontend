@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import { Modal, Button, Card } from 'react-bootstrap';
 import ReactPlayer from 'react-player/youtube'
 
-
 const VideoRow = ({video, index}) => {
 
     const [show, setShow] = useState(false);

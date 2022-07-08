@@ -8,14 +8,12 @@ import Policy from './components/References/Policy/Policy.js'
 import Diet from './components/Recommender/Diet/Diet.js';
 import Exercise from './components/Recommender/Exercise/Exercise.js';
 import ScrollToTop from './ScrollToTop.js';
-// import Chat from './components/Chatbot/Chatbox/Chat.js';
-// import TextMain from './components/Resources/Text/TextMain/TextMain.js';
-// import VideosMain from './components/Resources/VideosMain/VideosMain.js';
+import Chat from './components/Chatbot/Chat.js';
+import VideosMain from './components/Videos/VideosMain.js';
 // import Admin from './components/Admin/Admin.js';
-// import Audio from './components/Resources/Audio/Audio.js';
 
 // Responsiveness
-// Authtoken
+// Authtoken useState
 
 function App() {
   return (
@@ -25,34 +23,30 @@ function App() {
         <Fragment>
           <ScrollToTop/>
           <Switch>
-            <Route exact path='/' component={HomePage}/>
+            <Route exact path='/'>
+              <HomePage/>
+            </Route>
+            <Route exact path='/chatbot' >
+              <Chat/>
+            </Route>
             <Route exact path='/terms'>
               <Terms/>
             </Route>
             <Route exact path='/policy'>
               <Policy/>
             </Route>
-            {/* <Route exact path='/admin'>
-              <Admin/>
-            </Route>
-            <Route exact path='/admin'>
-              <Admin/>
-            </Route> */}
-            {/* <Route exact path='/chatbot' >
-              <Chat/>
-            </Route> */}
-            {/* <Route exact path='/text'>
-              <TextMain/>
-            </Route>
-            <Route exact path='/video'>
+            <Route exact path='/videos'>
               <VideosMain/>
-            </Route> */}
+            </Route>
             <Route exact path='/diet'>
               <Diet/>
             </Route>
             <Route exact path='/exercise'>
               <Exercise/>
             </Route>
+            {/* <Route exact path='/admin'>
+              <Admin/>
+            </Route> */}
           </Switch>
         </Fragment>
       </Router>
