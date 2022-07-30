@@ -42,13 +42,15 @@ const CredState = (props) => {
     if(res.success){
         // showAlrtState("Success", "Dear user, you have successfully login!");
         setCredCxt(true);
+        return true;
       }
       else{
-          localStorage.removeItem("authTokenSC");
-          showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);
-          setCredCxt(false);
-          //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
+        localStorage.removeItem("authTokenSC");
+        showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);
+        setCredCxt(false);
+        //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
       }
+    return false;
   }
 
   return (

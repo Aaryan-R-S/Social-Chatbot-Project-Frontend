@@ -1,79 +1,77 @@
-import React, {useState, useContext, useEffect} from 'react'
-import {Launcher} from 'react-chat-window'
-import { useHistory } from 'react-router-dom';
-import credContext from '../../context/cred/credContext.js';
+import React, { useState, useContext, useLayoutEffect } from "react";
+import { Widget, addResponseMessage, toggleWidget } from "react-chat-widget";
+import "react-chat-widget/lib/styles.css";
+import { useHistory } from "react-router-dom";
+import credContext from "../../context/cred/credContext.js";
+import sytlesSheet from './chat.css'
 
-const Chat = ()=> {
-  
+const Chat = () => {
   const history = useHistory();
   const context = useContext(credContext);
-  const {credCxt, showAlrtState, setShowLoginModal} = context;
+  const { credCxt, showAlrtState, setShowLoginModal, checkCredAuthToken } =
+    context;
+  //eslint-disable-next-line
   const [messageList, setMessageList] = useState([]);
 
-  useEffect(()=>{
-    if(!credCxt){
-      history.push('/');
-      showAlrtState("Warning", "Dear user, please login to access the chatbot service!");
+  useLayoutEffect(() => {
+    // if(localStorage.getItem('authTokenSC')){
+    //   checkCredAuthToken();
+    // }
+    toggleWidget();
+    if (localStorage.getItem("authTokenSC")) {
+      if (checkCredAuthToken() === false) {
+        history.push("/");
+        setTimeout(() => {
+          setShowLoginModal(true);
+        }, 3000);
+      } else {
+        // showAlrtState("Success", "Dear user, Welcome to the Social Chatbot!");
+        setShowLoginModal(false);
+        addResponseMessage("Welcome to this awesome chat!");
+      }
+    } else {
+      history.push("/");
+      showAlrtState(
+        "Warning",
+        "Dear user, please login to access the chatbot service!"
+      );
       setTimeout(() => {
         setShowLoginModal(true);
       }, 3000);
     }
-    else{
-      showAlrtState("Success", "Dear user, Welcome to the Social Chatbot!");
-      setShowLoginModal(false);
-    }
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
-  // Called when a message is sent, with a message object as an argument.
-  const _onMessageWasSent = (message)=> {
-    // message['date']=Date.now;
-    setMessageList([...messageList, message]);
-    setTimeout(() => {
-      let messageCopy = structuredClone(message);
-      messageCopy['author']='them';
-      setMessageList([...messageList, message, messageCopy]);
-    }, 1000);
+  const handleNewUserMessage = (newMessage) => {
     console.log(messageList);
-  }
-
-  // _sendMessage(text) {
-  //   if (text.length > 0) {
-  //     this.setState({
-  //       messageList: [...this.state.messageList, {
-  //         author: 'me',
-  //         type: 'text',
-  //         data: { text },
-  //         date:Date.now
-  //       }]
-  //     })
-  //   }
-  // }
-
-  //eslint-disable-next-line
-  const handleClick = ()=>{
-    // console.log("o")
-  }
+    setMessageList([...messageList, newMessage]);
+    // console.log(`New message incoming! ${newMessage}`);
+    // Now send the message throught the backend API
+    setTimeout(() => {
+      addResponseMessage(newMessage);
+      setMessageList([...messageList, newMessage]);
+    }, 1000);
+  };
 
   return (
-  <div>
-    {credCxt &&
-      <Launcher
-        agentProfile={{
-          teamName: 'Social Chatbot',
-          imageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png'
-        }}
-        onMessageWasSent={_onMessageWasSent.bind(this)}
-        messageList={messageList}
-        showEmoji
-        // showFileIcon={false}
-        // handleClick={this.handleClick}
-        isOpen
-        isWebView={true}
-      />
-    }
-  </div>
-  )
-}
+    <div>
+      {credCxt && (
+        <Widget
+          className={sytlesSheet}
+          handleNewUserMessage={handleNewUserMessage}
+          title="Social Chatbot"
+          subtitle="An AI powered chatbot"
+          senderPlaceHolder="Type a message"
+          profileAvatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9OjBMsliZgmJhLAVg6CVHauN0Q3FbYcJ0Ww&usqp=CAU"
+          profileClientAvatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4EC26dH5Nu1_AGZ65YVIwYgGcNTQJhAYgzQ&usqp=CAU"
+          titleAvatar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9OjBMsliZgmJhLAVg6CVHauN0Q3FbYcJ0Ww&usqp=CAU"
+          emojis
+          autofocus
+          showBadge={false}
+        />
+      )}
+    </div>
+  );
+};
 
 export default Chat;

@@ -1,0 +1,32 @@
+.rcw-conversation-container > .rcw-title {
+    font-size: small;
+}
+
+.rcw-conversation-container > .rcw-header {
+    background-color: #FF9F29;
+    font-weight: 450;
+    height: 8rem;
+}
+
+.rcw-conversation-container{
+    width: 70vw;
+    height: auto;
+    margin-right: 13vw;
+    margin-left: 0vw;
+    margin-bottom: 5vh;
+}
+
+.rcw-conversation-container .rcw-message-text{
+    max-width: 60vw;
+    background-color: #FAF3E3;
+}
+
+.rcw-messages-container {
+    max-height: 100%;
+}
+
+.rcw-launcher{
+    display: none;
+}
+
+  

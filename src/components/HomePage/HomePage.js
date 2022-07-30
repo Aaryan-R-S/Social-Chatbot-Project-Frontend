@@ -1,4 +1,4 @@
-import { React, useContext, useEffect, useState} from 'react';
+import { React, useContext, useLayoutEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import CardInfo from '../Card/CardInfo.js';
@@ -13,7 +13,7 @@ import credContext from '../../context/cred/credContext.js';
 const HomePage = () => {
     const context = useContext(credContext);
     const {checkCredAuthToken} = context;
-    useEffect(() => {
+    useLayoutEffect(() => {
         if(localStorage.getItem('authTokenSC')){
           checkCredAuthToken();
         }
