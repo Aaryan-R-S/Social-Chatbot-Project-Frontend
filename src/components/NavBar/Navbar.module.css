@@ -11,12 +11,13 @@
 
 .navbar-item{
     font-family : Inter;
-    color : black;
+    color : rgba(0, 0, 0, 0.517);
     font-size : 2.5vh;
     font-weight : 500;
     text-decoration: none;
     margin-left: 2rem;
 }
+
 
 .dropdown-item{
     font-family : Inter;

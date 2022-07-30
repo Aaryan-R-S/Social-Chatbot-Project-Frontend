@@ -1,24 +1,29 @@
-import { React, useState } from 'react';
-import { Button, ButtonToolbar, Modal, Container, Row, Col, Navbar} from 'react-bootstrap';
+import { React, useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, ButtonToolbar, Modal, Container, Row, Col} from 'react-bootstrap';
 import { buttonStyle, modalButtonStyle, modalButtonStyleHover } from './NavBarButtonStyle.js';
 import LoginForm from '../LoginForm/LoginForm.js';
 import SignUpForm from '../SignUpForm/SignUpForm.js';
 import AdminLoginForm from '../AdminLogin/AdminLoginForm.js';
+import credContext from '../../../context/cred/credContext.js';
 
 // If login show name as button which will redirect to see questionnaires along with logout option
 // else show login/signup button
 
 const NavBarButtons = () => {
+    let history = useHistory();
 
-    const [show, setShow] = useState(false);
+    const context = useContext(credContext);
+    const {credCxt, setCredCxt, showAlrtState, showLoginModal, setShowLoginModal} = context;
+    
     const [selected, setSelected] = useState('SignUp');
 
     const handleClose = () => {
-        setShow(false);
+        setShowLoginModal(false);
         setSelected('SignUp');
     };
 
-    const handleShow = () => setShow(true);
+    const handleShow = () => setShowLoginModal(true);
 
     const LoginHandler = () => {
         handleShow();
@@ -28,29 +33,28 @@ const NavBarButtons = () => {
         setSelected(value);
     };
 
+    const handleLogout = ()=>{
+        showAlrtState("Success", "You have successfully Logged Out!");
+        setCredCxt(false);
+        localStorage.removeItem("authTokenSC");
+        handleClose();
+        history.push("/");
+    }
+
     return (
         <>
             {/* If already login */}
-            {false && 
-            <>
-                <Navbar.Text style={{
-                    fontFamily : "Inter",
-                    color : "black",
-                    fontSize : "2.5vh",
-                    fontWeight : "400",
-                }}>
-                    Welcome, UserName
-                </Navbar.Text>
-            </>
+            {credCxt && 
+                <Button size="lg" variant="default" style={buttonStyle} onClick={handleLogout}>Logout</Button>
             }
             {/* If not login */}
-            {true && 
+            {!credCxt && 
             <>
                 <ButtonToolbar>
                     <Button size="lg" variant="default" style={buttonStyle} onClick={LoginHandler}>SignUp/Login</Button>
                 </ButtonToolbar>
                 <Modal 
-                    show={show} 
+                    show={showLoginModal} 
                     onHide={handleClose}
                     centered
                     style={{maxWidth : "100%", maxHeight : "100%"}}

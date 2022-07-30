@@ -4,8 +4,8 @@ export const MenuItems = [
         'url' : '/chatbot',
     },
     {
-        'title' : 'Videos',
-        'url' : '/videos',
+        'title' : 'My Dashboard',
+        'url' : '/dashboard',
     }
 ];
 

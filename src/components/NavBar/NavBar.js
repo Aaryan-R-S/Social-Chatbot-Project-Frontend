@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; 
-import { MenuItems } from './NavbarItems';
+// import { MenuItems } from './NavbarItems';
 import NavBarButtons from './NavBarButtons/NavBarButtons';
 import brandIcon from './images/robot-hand.png';
 
@@ -17,16 +17,27 @@ const NavBar = () => {
                 </Navbar.Brand>
 
                 <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>
-                    {MenuItems.map( (item, index) => {
+                    {/* {MenuItems.map( (item, index) => {
                         return (
-                        <Nav className={styles['navbar-item']} key={index}>
-                            <Nav.Link as={Link} to={item['url']}>
-                                {item['title']}
-                            </Nav.Link>
-                        </Nav>);
-                    })}
+                            <Nav className={styles['navbar-item']} key={index}>
+                                <Nav.Link as={Link} to={item['url']}>
+                                    {item['title']}
+                                </Nav.Link>
+                            </Nav>
+                        );
+                    })} */}
+                    <Nav className={styles['navbar-item']}>
+                        <Nav.Link as={Link} to={'chatbot'}>
+                            Chatbot
+                        </Nav.Link>
+                    </Nav>
 
-                    <NavDropdown title={<span className={styles['navbar-item']}> Suggestions </span>}>
+                    <NavDropdown title={<span className={styles['navbar-item']}> Resources </span>}>
+                        <Nav className={styles['dropdown-item']}>
+                            <Nav.Link as={Link} to='videos'>
+                                Videos
+                            </Nav.Link>
+                        </Nav>
                         <Nav className={styles['dropdown-item']}>
                             <Nav.Link as={Link} to='diet'>
                                 Diet
@@ -38,6 +49,13 @@ const NavBar = () => {
                             </Nav.Link>
                         </Nav>
                     </NavDropdown>
+
+                    <Nav className={styles['navbar-item']}>
+                        <Nav.Link as={Link} to={'dashboard'}>
+                            Dashboard
+                        </Nav.Link>
+                    </Nav>
+
                     <NavBarButtons/>
 
                 </Navbar.Collapse>

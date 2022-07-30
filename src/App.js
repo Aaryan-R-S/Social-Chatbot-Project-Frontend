@@ -1,6 +1,7 @@
 import { Fragment, React } from 'react';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
+import CredState from './context/cred/CredState';
 import NavBar from './components/NavBar/NavBar.js';
 import HomePage from './components/HomePage/HomePage.js';
 import Terms from './components/References/Terms/Terms.js'
@@ -9,17 +10,21 @@ import Diet from './components/Recommender/Diet/Diet.js';
 import Exercise from './components/Recommender/Exercise/Exercise.js';
 import ScrollToTop from './ScrollToTop.js';
 import Chat from './components/Chatbot/Chat.js';
+import Dashboard from './components/Dashboard/Dashboard.js';
 import VideosMain from './components/Videos/VideosMain.js';
+import Alert from './components/NavBar/Alert/Alert';
 // import Admin from './components/Admin/Admin.js';
 
 // Responsiveness
-// Authtoken useState
 
 function App() {
+  
   return (
     <>
+      <CredState>
       <Router>
         <NavBar/>
+        <Alert/>
         <Fragment>
           <ScrollToTop/>
           <Switch>
@@ -44,12 +49,16 @@ function App() {
             <Route exact path='/exercise'>
               <Exercise/>
             </Route>
+            <Route exact path='/dashboard'>
+              <Dashboard/>
+            </Route>
             {/* <Route exact path='/admin'>
               <Admin/>
             </Route> */}
           </Switch>
         </Fragment>
       </Router>
+      </CredState>
     </>
   );
 }

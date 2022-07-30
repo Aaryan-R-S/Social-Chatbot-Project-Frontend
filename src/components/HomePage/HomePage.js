@@ -1,4 +1,4 @@
-import { React, useState} from 'react';
+import { React, useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import CardInfo from '../Card/CardInfo.js';
@@ -8,7 +8,18 @@ import counsellingImage from '../../images/webbg.jpg';
 import { container } from './HomePageStyle.js';
 import { modalButtonStyle, modalButtonStyleHover } from '../NavBar/NavBarButtons/NavBarButtonStyle.js';
 
+import credContext from '../../context/cred/credContext.js';
+
 const HomePage = () => {
+    const context = useContext(credContext);
+    const {checkCredAuthToken} = context;
+    useEffect(() => {
+        if(localStorage.getItem('authTokenSC')){
+          checkCredAuthToken();
+        }
+        //eslint-disable-next-line
+    }, [])
+
     const [hover1, setHover1] = useState();
     const [hover2, setHover2] = useState();
 

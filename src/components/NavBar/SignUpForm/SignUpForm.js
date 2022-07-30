@@ -1,19 +1,53 @@
-import {React} from 'react';
+import {React, useContext, useState} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { confidentialityEnsured } from '../../HomePage/HomePageContent.js';
+import { useHistory } from 'react-router-dom';
+import credContext from '../../../context/cred/credContext.js';
 
 // Make signup attempt
 // If successful show success toast and store authToken
 // else show failure toast with exact error and clear form
 
 const SignUpForm = () => {
+    const context = useContext(credContext);
+    // console.log(context);
+    // eslint-disable-next-line 
+    const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal} = context;
 
-    const singUpHandler = (event) => {
+    let history = useHistory();
+    
+    // eslint-disable-next-line 
+    const [credentials, setCredentials] = useState({name:"", email:"", password:""});
+
+    const singUpHandler = async (event) => {
         event.preventDefault();
         const name = event.target[0].value;
         const email = event.target[1].value;
         const password = event.target[2].value;
-        console.log(name, email, password);
+        // console.log(name, email, password);
+        setCredentials({name, email, password})
+
+        const response = await fetch(`${url}/api/auth/addUser`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({name, email, password})
+          });
+          const res = await response.json();
+        //   console.log(res);
+          if(res.success){
+              showAlrtState("Success", "Dear user, you have successfully signed in!");
+              localStorage.setItem('authTokenSC', res.authToken);
+              setCredCxt(true);
+              history.push("/");
+            }
+            else{
+                showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);
+                setCredCxt(false);
+                //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
+            }
+            setShowLoginModal(false);
     };
 
     return (
