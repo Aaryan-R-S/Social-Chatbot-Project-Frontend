@@ -12,7 +12,7 @@ const SignUpForm = () => {
     const context = useContext(credContext);
     // console.log(context);
     // eslint-disable-next-line 
-    const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal} = context;
+    const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal, checkCredAuthToken} = context;
 
     let history = useHistory();
     
@@ -40,6 +40,7 @@ const SignUpForm = () => {
               showAlrtState("Success", "Dear user, you have successfully signed in!");
               localStorage.setItem('authTokenSC', res.authToken);
               setCredCxt(true);
+              checkCredAuthToken();
               history.push("/");
             }
             else{

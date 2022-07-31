@@ -11,7 +11,7 @@ const LoginForm = () => {
     const context = useContext(credContext);
     // console.log(context);
     // eslint-disable-next-line 
-    const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal} = context;
+    const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal, checkCredAuthToken} = context;
 
     let history = useHistory();
     
@@ -38,6 +38,7 @@ const LoginForm = () => {
               showAlrtState("Success", "Dear user, you have successfully login!");
               localStorage.setItem('authTokenSC', res.authToken);
               setCredCxt(true);
+              checkCredAuthToken();
               history.push("/");
             }
             else{

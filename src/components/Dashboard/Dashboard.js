@@ -2,6 +2,8 @@ import React, {useContext, useLayoutEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import credContext from '../../context/cred/credContext.js';
 
+// make modal to view individual questionnaires
+
 const Chat = ()=> {
   
   const history = useHistory();
@@ -13,7 +15,7 @@ const Chat = ()=> {
     //   checkCredAuthToken();
     // }
     if(localStorage.getItem('authTokenSC')){
-      if(checkCredAuthToken()===false){
+      if(checkCredAuthToken().success===false){
         history.push('/');
         setTimeout(() => {
           setShowLoginModal(true);

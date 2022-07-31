@@ -14,7 +14,7 @@ const NavBarButtons = () => {
     let history = useHistory();
 
     const context = useContext(credContext);
-    const {credCxt, setCredCxt, showAlrtState, showLoginModal, setShowLoginModal} = context;
+    const {credCxt, setCredCxt, showAlrtState, showLoginModal, setShowLoginModal, setUser, setCurrQuestionnaire} = context;
     
     const [selected, setSelected] = useState('SignUp');
 
@@ -37,6 +37,9 @@ const NavBarButtons = () => {
         showAlrtState("Success", "You have successfully Logged Out!");
         setCredCxt(false);
         localStorage.removeItem("authTokenSC");
+        localStorage.removeItem("currQuestionnaireSC");
+        setUser(null);
+        setCurrQuestionnaire([]);
         handleClose();
         history.push("/");
     }

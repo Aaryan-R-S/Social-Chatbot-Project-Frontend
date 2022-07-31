@@ -7,6 +7,8 @@ const CredState = (props) => {
     // eslint-disable-next-line 
   const [credCxt, setCredCxt] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [user, setUser] = useState({});
+  const [currQuestionnaire, setCurrQuestionnaire] = useState([]);
 
   const [alrtState, setAlrtState] = useState({
     vis: false,
@@ -42,19 +44,34 @@ const CredState = (props) => {
     if(res.success){
         // showAlrtState("Success", "Dear user, you have successfully login!");
         setCredCxt(true);
-        return true;
+        setUser(res.user);
+        // console.log(res.user);
+        // console.log(user);
+        if(localStorage.getItem("currQuestionnaireSC")){
+          const ques = await JSON.parse(localStorage.getItem("currQuestionnaireSC"));
+          // console.log("saved questionnaire", ques);
+          setCurrQuestionnaire(ques);
+          res.ques = ques;
+        }
+        else{
+          setCurrQuestionnaire([]);
+          res.ques = [];
+        }
+        return res;
       }
       else{
         localStorage.removeItem("authTokenSC");
         showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);
         setCredCxt(false);
+        setUser({});
+        setCurrQuestionnaire([]);
         //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
       }
-    return false;
+    return res;
   }
 
   return (
-    <CredContext.Provider value={{ url, credCxt, setCredCxt, alrtState, showAlrtState, showLoginModal, setShowLoginModal, checkCredAuthToken}}>
+    <CredContext.Provider value={{ url, credCxt, setCredCxt, alrtState, showAlrtState, showLoginModal, setShowLoginModal, checkCredAuthToken, user, setUser, currQuestionnaire, setCurrQuestionnaire}}>
       {props.children}
     </CredContext.Provider>
   )
