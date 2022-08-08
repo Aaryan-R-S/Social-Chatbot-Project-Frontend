@@ -5,20 +5,11 @@
 ☐ npm install react-router-dom@5.2.0
 
 %% To Do %%
-    ☐ Input statements check words are correct or not
-    {
-        Check Micsoft module for offline text-to-speech output
-        For checking valid words - https://www.npmjs.com/package/check-if-word
-        
-        const checkStatements = (myStatement)=>{
-            var checkWord = require('check-if-word');
-            let myWords = myStatement.match(/\b(\w+)\b/g);
-            let words = checkWord('en');
-            return (words.getValidWords(myWords).length >= myWords.length/2);
-        };
-    }
+    ☐ After submitting questionnaire user must be able to see suggestions, videos, receive mail of this, send mail of appointment to psychologist along with questionnaire  
+    ☐ User Dashboard see and delete questionnaire and send mail of appointment (limit: 2 mails per day) to psychologist along with questionnaire in click/closable model
+    ☐ Admin Dashboard see everyones response no delete
     ☐ Responsiveness
-    ☐ Make "repository" on GitHub
+    ☐ Add "questions" and "videos" to database after discussions
     ☐ Online Database "MongoDB Atlas"
     ☐ Deploy on Heroku OR "IIITD server"
-    ☐ Add "questions" and "videos" to database
+    ☐ NLP to improve chatbot
