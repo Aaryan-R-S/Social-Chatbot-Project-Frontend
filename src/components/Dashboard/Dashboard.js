@@ -22,7 +22,7 @@ const Chat = ()=> {
         }, 3000);
       }
       else{
-        showAlrtState("Success", "Dear user, Welcome to your dashboard!");
+        // showAlrtState("Success", "Dear user, Welcome to your dashboard!");
         setShowLoginModal(false);
       }
     }

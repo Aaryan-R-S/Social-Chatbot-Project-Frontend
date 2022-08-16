@@ -27,7 +27,7 @@ const NavBar = () => {
                         );
                     })} */}
                     <Nav className={styles['navbar-item']}>
-                        <Nav.Link as={Link} to={'chatbot'}>
+                        <Nav.Link href={'/chatbot'} >
                             Chatbot
                         </Nav.Link>
                     </Nav>

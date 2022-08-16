@@ -1,15 +1,19 @@
-%% Frontend %%
 ☐ npx create-react-app %appName% [OR npx create-react-app .] [OR npm create-react-app %appName%]
 ☐ npm run start
 ☐ npm run build
 ☐ npm install react-router-dom@5.2.0
 
 %% To Do %%
-    ☐ After submitting questionnaire user must be able to see suggestions, videos, receive mail of this, send mail of appointment to psychologist along with questionnaire  
-    ☐ User Dashboard see and delete questionnaire and send mail of appointment (limit: 2 mails per day) to psychologist along with questionnaire in click/closable model
+    ☐ After submitting questionnaire user must be able to see suggestions and videos, close it (redirect ot dashboard in each case), copy it, receive mail of it, and send mail of appointment (limit: 1 mail only) to psychologist along with questionnaire  
+    ☐ Dashboard alert bar
+
+    ☐ User Dashboard see and delete questionnaire and send mail of appointment (limit: 1 mail only) to psychologist along with questionnaire in click/closable model
     ☐ Admin Dashboard see everyones response no delete
-    ☐ Responsiveness
-    ☐ Add "questions" and "videos" to database after discussions
-    ☐ Online Database "MongoDB Atlas"
-    ☐ Deploy on Heroku OR "IIITD server"
+    ☐ Export database to MongoDB Atlas or IIITD server
+    ☐ Deploy on Heroku OR domain OR IIITD server via github
+    ☐ Add questions (with suggestions and videos) to database (review grammar again) after discussions
+    ☐ Add Videos (YT - pyschological and spiritual) and Texts (spiritual) to Resources tab
+    ☐ Add content to Terms and Conditions and Privacy Policy page after discussions
     ☐ NLP to improve chatbot
+    ☐ Review website content by Profs
+    ☐ Responsiveness

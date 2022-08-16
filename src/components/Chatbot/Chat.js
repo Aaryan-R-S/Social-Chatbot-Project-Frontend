@@ -200,12 +200,17 @@ const Chat = () => {
                 JSON.stringify(currQuestionnaire)
             );
             setCurrQuestionnaire([]);
+            showAlrtState("Success", "Your chat has been save successfully!");
             history.push("/");
             return;
         }
-        if (String(newMessage).toLowerCase() === "discard chat") {
+        if (String(newMessage).toLowerCase() === "delete chat") {
             localStorage.removeItem("currQuestionnaireSC");
             setCurrQuestionnaire([]);
+            showAlrtState(
+                "Success",
+                "Your chat has been deleted successfully!"
+            );
             history.push("/");
             return;
         }
@@ -222,6 +227,7 @@ const Chat = () => {
             0
         );
         // console.log(posAnswers);
+        // use NLP here
         posAnswers = posAnswers.myCurrQuestionResults.answers;
         for (let index = 0; index < posAnswers.length; index++) {
             const element = posAnswers[index];
