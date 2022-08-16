@@ -20,9 +20,17 @@ const Chat = () => {
         credCxt,
         showAlrtState,
         setShowLoginModal,
+        setShowSuggModal,
         checkCredAuthToken,
         currQuestionnaire,
         setCurrQuestionnaire,
+        questionAnswer,
+        setQuestionAnswer,
+        suggestions,
+        setSuggestions,
+        videos,
+        setVideos,
+        setQuestionnaireId,
     } = context;
     //eslint-disable-next-line
     const [messageList, setMessageList] = useState([]);
@@ -39,7 +47,7 @@ const Chat = () => {
                     }, 3000);
                 } else {
                     setShowLoginModal(false);
-                    showQuestionnaire(res.user, res.ques);
+                    showQuestionnaire(res.user, res.ques, res.qna, res.sugg, res.vid);
                 }
             });
         } else {
@@ -131,7 +139,7 @@ const Chat = () => {
                     "Content-Type": "application/json",
                     "auth-token": localStorage.getItem("authTokenSC"),
                 },
-                body: JSON.stringify({ questionanswers: [myValidQuestions] }),
+                body: JSON.stringify({ questionanswers: myValidQuestions }),
             }
         );
         const res = await response.json();
@@ -147,7 +155,7 @@ const Chat = () => {
         }
     };
 
-    const showQuestionnaire = async (myUser, ques) => {
+    const showQuestionnaire = async (myUser, ques, qna, sugg, vid) => {
         // console.log("currQuestionnaire ", ques);
         if (ques.length <= 1) {
             let quesRes = await fetchNxtQuestionById(0, 0);
@@ -161,10 +169,19 @@ const Chat = () => {
                         answerid: "",
                     },
                 ]);
+                setQuestionAnswer([
+                    {
+                        questionTxt: quesRes.myNextQuestion.text + " " + res1,
+                        answer: "",
+                    },
+                ]);
             });
             return;
         }
         setCurrQuestionnaire(ques);
+        setQuestionAnswer(qna);
+        setSuggestions(sugg);
+        setVideos(vid);
         let copyMsgList = [];
         for (let index = 0; index < ques.length - 1; index++) {
             let quesRes = await fetchQuestionTxtById(
@@ -193,20 +210,32 @@ const Chat = () => {
 
     const handleNewUserMessage = async (newMessage) => {
         // console.log("newMessage", newMessage);
+        // console.log(questionAnswer);
+        // console.log(suggestions);
+        // console.log(videos);
         if (String(newMessage).toLowerCase() === "save chat") {
             // console.log("currQuestionnaire", currQuestionnaire);
-            localStorage.setItem(
-                "currQuestionnaireSC",
-                JSON.stringify(currQuestionnaire)
-            );
+            localStorage.setItem("currQuestionnaireSC", JSON.stringify(currQuestionnaire));
+            localStorage.setItem("currQnaSC", JSON.stringify(questionAnswer));
+            localStorage.setItem("currSuggestionsSC", JSON.stringify(suggestions));
+            localStorage.setItem("currVideosSC", JSON.stringify(videos));
             setCurrQuestionnaire([]);
+            setQuestionAnswer([]);
+            setSuggestions([]);
+            setVideos([]);
             showAlrtState("Success", "Your chat has been save successfully!");
             history.push("/");
             return;
         }
         if (String(newMessage).toLowerCase() === "delete chat") {
             localStorage.removeItem("currQuestionnaireSC");
+            localStorage.removeItem("currQnaSC");
+            localStorage.removeItem("currSuggestionsSC");
+            localStorage.removeItem("currVideosSC");
             setCurrQuestionnaire([]);
+            setQuestionAnswer([]);
+            setSuggestions([]);
+            setVideos([]);
             showAlrtState(
                 "Success",
                 "Your chat has been deleted successfully!"
@@ -216,9 +245,11 @@ const Chat = () => {
         }
         setMessageList([...messageList, newMessage]);
         let copyCurrQuestionnaire = [];
+        let copyCurrQna = [];
         for (let index = 0; index < currQuestionnaire.length - 1; index++) {
             const element = currQuestionnaire[index];
             copyCurrQuestionnaire.push(element);
+            copyCurrQna.push(questionAnswer[index]);
         }
         // console.log(currQuestionnaire);
         let answerid = "-1";
@@ -238,13 +269,17 @@ const Chat = () => {
             }
         }
         copyCurrQuestionnaire.push({
-            questionid:
-                currQuestionnaire[currQuestionnaire.length - 1].questionid,
+            questionid: currQuestionnaire[currQuestionnaire.length - 1].questionid,
             answer: newMessage,
             answerid,
         });
+        copyCurrQna.push({
+            questionTxt: questionAnswer[questionAnswer.length - 1].questionTxt,
+            answer: newMessage,
+        });
         // console.log("copyCurrQuestionnaire", copyCurrQuestionnaire);
         setCurrQuestionnaire(copyCurrQuestionnaire);
+        setQuestionAnswer(copyCurrQna);
         setTimeout(() => {
             fetchNxtQuestionById(
                 copyCurrQuestionnaire[copyCurrQuestionnaire.length - 1]
@@ -268,11 +303,39 @@ const Chat = () => {
                         .questionid
                 ) {
                     // all done
-                    saveQuestionnaire(copyCurrQuestionnaire).then((res) => {
-                        // console.log("res", res);
-                        if (res.success) {
-                            setCurrQuestionnaire([]);
-                            localStorage.removeItem("currQuestionnaireSC");
+                    if(res.myCurrQuestionResults.suggestions.length!==0){
+                        setSuggestions([
+                            ...suggestions,
+                            res.myCurrQuestionResults.suggestions[0]
+                        ]);
+                        localStorage.setItem("currSuggestionsSC", JSON.stringify([
+                            ...suggestions,
+                            res.myCurrQuestionResults.suggestions[0]
+                        ]));
+                    }
+                    else{
+                        localStorage.setItem("currSuggestionsSC", JSON.stringify(suggestions));
+                    }
+                    if(res.myCurrQuestionResults.videos.length!==0){
+                        setVideos([
+                            ...videos,
+                            res.myCurrQuestionResults.videos[0]
+                        ]);
+                        localStorage.setItem("currVideosSC", JSON.stringify([
+                            ...videos,
+                            res.myCurrQuestionResults.videos[0]
+                        ]));
+                    }
+                    else{
+                        localStorage.setItem("currVideosSC", JSON.stringify(videos));
+                    }
+                    saveQuestionnaire(copyCurrQuestionnaire).then((res2) => {
+                        // console.log("res2", res2);
+                        if (res2.success) {
+                            setQuestionnaireId(res2.questionnaireId);
+                            setShowSuggModal(true);
+                            localStorage.setItem("currQuestionnaireSC", JSON.stringify(copyCurrQuestionnaire));
+                            localStorage.setItem("currQnaSC", JSON.stringify(copyCurrQna));
                             history.push("/dashboard");
                         } else {
                             history.push("/");
@@ -293,6 +356,25 @@ const Chat = () => {
                                     answerid: "",
                                 },
                             ]);
+                            setQuestionAnswer([
+                                ...copyCurrQna,
+                                {
+                                    questionTxt: res.myNextQuestion.text + " " + res1,
+                                    answer: "",
+                                },
+                            ]);
+                            if(res.myCurrQuestionResults.suggestions.length!==0){
+                                setSuggestions([
+                                    ...suggestions,
+                                    res.myCurrQuestionResults.suggestions[0]
+                                ]);
+                            }
+                            if(res.myCurrQuestionResults.videos.length!==0){
+                                setVideos([
+                                    ...videos,
+                                    res.myCurrQuestionResults.videos[0]
+                                ]);
+                            }
                         }
                     );
                 }

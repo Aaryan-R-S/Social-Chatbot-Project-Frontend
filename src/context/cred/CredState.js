@@ -7,8 +7,13 @@ const CredState = (props) => {
     // eslint-disable-next-line 
   const [credCxt, setCredCxt] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSuggModal, setShowSuggModal] = useState(false);
   const [user, setUser] = useState({});
   const [currQuestionnaire, setCurrQuestionnaire] = useState([]);
+  const [questionAnswer, setQuestionAnswer] = useState([])
+  const [suggestions, setSuggestions] = useState([]);
+  const [videos, setVideos] = useState([]);
+  const [questionnaireId, setQuestionnaireId] = useState("");
 
   const [alrtState, setAlrtState] = useState({
     vis: false,
@@ -49,13 +54,27 @@ const CredState = (props) => {
         // console.log(user);
         if(localStorage.getItem("currQuestionnaireSC")){
           const ques = await JSON.parse(localStorage.getItem("currQuestionnaireSC"));
-          // console.log("saved questionnaire", ques);
+          const qna = localStorage.getItem("currQnaSC") ? await JSON.parse(localStorage.getItem("currQnaSC")) : [];
+          const sugg = localStorage.getItem("currSuggestionsSC") ? await JSON.parse(localStorage.getItem("currSuggestionsSC")) : [];
+          const vid = localStorage.getItem("currVideosSC") ? await JSON.parse(localStorage.getItem("currVideosSC")) : [];
           setCurrQuestionnaire(ques);
+          setQuestionAnswer(qna);
+          setSuggestions(sugg);
+          setVideos(vid);
           res.ques = ques;
+          res.qna = qna;
+          res.sugg = sugg;
+          res.vid = vid;
         }
         else{
           setCurrQuestionnaire([]);
+          setQuestionAnswer([]);
+          setSuggestions([]);
+          setVideos([]);
           res.ques = [];
+          res.qna = [];
+          res.sugg = [];
+          res.vid = [];
         }
         return res;
       }
@@ -65,13 +84,16 @@ const CredState = (props) => {
         setCredCxt(false);
         setUser({});
         setCurrQuestionnaire([]);
+        setQuestionAnswer([]);
+        setSuggestions([]);
+        setVideos([]);
         //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
       }
     return res;
   }
 
   return (
-    <CredContext.Provider value={{ url, credCxt, setCredCxt, alrtState, showAlrtState, showLoginModal, setShowLoginModal, checkCredAuthToken, user, setUser, currQuestionnaire, setCurrQuestionnaire}}>
+    <CredContext.Provider value={{ url, credCxt, setCredCxt, alrtState, showAlrtState, showLoginModal, setShowLoginModal, showSuggModal, setShowSuggModal, checkCredAuthToken, user, setUser, currQuestionnaire, setCurrQuestionnaire, questionAnswer, setQuestionAnswer, suggestions, setSuggestions, videos, setVideos, questionnaireId, setQuestionnaireId}}>
       {props.children}
     </CredContext.Provider>
   )

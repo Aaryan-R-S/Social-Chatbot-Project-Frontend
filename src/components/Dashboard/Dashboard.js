@@ -1,5 +1,6 @@
 import React, {useContext, useLayoutEffect} from 'react'
 import { useHistory } from 'react-router-dom';
+import SuggestionModal from './ResultModal/SuggestionModal.js';
 import credContext from '../../context/cred/credContext.js';
 
 // make modal to view individual questionnaires
@@ -8,7 +9,7 @@ const Chat = ()=> {
   
   const history = useHistory();
   const context = useContext(credContext);
-  const {credCxt, showAlrtState, setShowLoginModal, checkCredAuthToken} = context;
+  const {credCxt, showAlrtState, setShowLoginModal, checkCredAuthToken, showSuggModal} = context;
 
   useLayoutEffect(() => {
     // if(localStorage.getItem('authTokenSC')){
@@ -39,6 +40,7 @@ const Chat = ()=> {
   return (
   <div>
     {credCxt && "Nothing to show!"}
+    {showSuggModal && <SuggestionModal/>}
   </div>
   )
 }
