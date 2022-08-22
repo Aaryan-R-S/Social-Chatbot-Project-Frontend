@@ -18,6 +18,7 @@ const Chat = () => {
     const {
         url,
         credCxt,
+        isAdmin,
         showAlrtState,
         setShowLoginModal,
         setShowSuggModal,
@@ -62,6 +63,13 @@ const Chat = () => {
         }
         //eslint-disable-next-line
     }, []);
+
+    useLayoutEffect(()=>{
+        if(isAdmin){
+            history.push('/dashboard');
+        }
+        // eslint-disable-next-line
+    }, [isAdmin])
 
     const getOptionsString = async (answersArr) => {
         if (answersArr.length === 0) {
