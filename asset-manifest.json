@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Social-Chatbot-Project-Frontend/static/css/main.268d48a2.css",
-    "main.js": "/Social-Chatbot-Project-Frontend/static/js/main.9b191bd9.js",
+    "main.js": "/Social-Chatbot-Project-Frontend/static/js/main.b1fe091f.js",
     "static/js/787.cda612ba.chunk.js": "/Social-Chatbot-Project-Frontend/static/js/787.cda612ba.chunk.js",
     "static/media/dashboard.jpg": "/Social-Chatbot-Project-Frontend/static/media/dashboard.d46470bcc40196d893fd.jpg",
     "static/media/webbg.jpg": "/Social-Chatbot-Project-Frontend/static/media/webbg.0b1b3f781e59b9432f5c.jpg",
@@ -11,11 +11,11 @@
     "static/media/helping-hand.png": "/Social-Chatbot-Project-Frontend/static/media/helping-hand.cd80a1de62c3465d1f5f.png",
     "index.html": "/Social-Chatbot-Project-Frontend/index.html",
     "main.268d48a2.css.map": "/Social-Chatbot-Project-Frontend/static/css/main.268d48a2.css.map",
-    "main.9b191bd9.js.map": "/Social-Chatbot-Project-Frontend/static/js/main.9b191bd9.js.map",
+    "main.b1fe091f.js.map": "/Social-Chatbot-Project-Frontend/static/js/main.b1fe091f.js.map",
     "787.cda612ba.chunk.js.map": "/Social-Chatbot-Project-Frontend/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.268d48a2.css",
-    "static/js/main.9b191bd9.js"
+    "static/js/main.b1fe091f.js"
   ]
 }
