@@ -167,7 +167,7 @@ const QuestionnaireModal = () => {
             );
             // console.log("res.errors", res.errors);
         }
-        window.location.href = '/dashboard';
+        window.location.href = '/Social-Chatbot-Project-Frontend/dashboard';
     }
 
     const handleTakeAppointment = async () => {
