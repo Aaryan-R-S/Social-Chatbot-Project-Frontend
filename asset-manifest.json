@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Social-Chatbot-Project-Frontend/static/css/main.268d48a2.css",
+    "main.js": "/Social-Chatbot-Project-Frontend/static/js/main.aaae6008.js",
+    "static/js/787.cda612ba.chunk.js": "/Social-Chatbot-Project-Frontend/static/js/787.cda612ba.chunk.js",
+    "static/media/dashboard.jpg": "/Social-Chatbot-Project-Frontend/static/media/dashboard.d46470bcc40196d893fd.jpg",
+    "static/media/webbg.jpg": "/Social-Chatbot-Project-Frontend/static/media/webbg.0b1b3f781e59b9432f5c.jpg",
+    "static/media/yoga.jpg": "/Social-Chatbot-Project-Frontend/static/media/yoga.823aaf483c57230b14d3.jpg",
+    "static/media/chat_support.jpg": "/Social-Chatbot-Project-Frontend/static/media/chat_support.ed205dbdf11f4aec1e84.jpg",
+    "static/media/food.jpg": "/Social-Chatbot-Project-Frontend/static/media/food.8e1569d39022d9503e45.jpg",
+    "static/media/helping-hand.png": "/Social-Chatbot-Project-Frontend/static/media/helping-hand.cd80a1de62c3465d1f5f.png",
+    "index.html": "/Social-Chatbot-Project-Frontend/index.html",
+    "main.268d48a2.css.map": "/Social-Chatbot-Project-Frontend/static/css/main.268d48a2.css.map",
+    "main.aaae6008.js.map": "/Social-Chatbot-Project-Frontend/static/js/main.aaae6008.js.map",
+    "787.cda612ba.chunk.js.map": "/Social-Chatbot-Project-Frontend/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.268d48a2.css",
+    "static/js/main.aaae6008.js"
+  ]
+}
