@@ -28,28 +28,28 @@ function App() {
         <Fragment>
           <ScrollToTop/>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/Social-Chatbot-Project-Frontend'>
               <HomePage/>
             </Route>
-            <Route exact path='/chatbot' >
+            <Route exact path='/Social-Chatbot-Project-Frontend/chatbot' >
               <Chat/>
             </Route>
-            <Route exact path='/terms'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/terms'>
               <Terms/>
             </Route>
-            <Route exact path='/policy'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/policy'>
               <Policy/>
             </Route>
-            <Route exact path='/videos'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/videos'>
               <VideosMain/>
             </Route>
-            <Route exact path='/diet'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/diet'>
               <Diet/>
             </Route>
-            <Route exact path='/exercise'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/exercise'>
               <Exercise/>
             </Route>
-            <Route exact path='/dashboard'>
+            <Route exact path='/Social-Chatbot-Project-Frontend/dashboard'>
               <Dashboard/>
             </Route>
             {/* <Route exact path='/admin'>

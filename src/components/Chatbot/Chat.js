@@ -42,7 +42,7 @@ const Chat = () => {
             checkCredAuthToken().then((res) => {
                 // console.log(res);
                 if (res.success === false) {
-                    history.push("/");
+                    history.push("/Social-Chatbot-Project-Frontend");
                     setTimeout(() => {
                         setShowLoginModal(true);
                     }, 3000);
@@ -52,7 +52,7 @@ const Chat = () => {
                 }
             });
         } else {
-            history.push("/");
+            history.push("/Social-Chatbot-Project-Frontend");
             showAlrtState(
                 "Warning",
                 "Dear user, please login to access the chatbot service!"
@@ -66,7 +66,7 @@ const Chat = () => {
 
     useLayoutEffect(()=>{
         if(isAdmin){
-            history.push('/dashboard');
+            history.push('/Social-Chatbot-Project-Frontend/dashboard');
         }
         // eslint-disable-next-line
     }, [isAdmin])
@@ -106,7 +106,7 @@ const Chat = () => {
                 typeof res.errors === "string" ? res.errors : res.errors[0].msg
             );
             // console.log("res.errors", res.errors);
-            history.push("/");
+            history.push("/Social-Chatbot-Project-Frontend");
         }
     };
 
@@ -232,7 +232,7 @@ const Chat = () => {
             setSuggestions([]);
             setVideos([]);
             showAlrtState("Success", "Your chat has been save successfully!");
-            history.push("/");
+            history.push("/Social-Chatbot-Project-Frontend");
             return;
         }
         if (String(newMessage).toLowerCase() === "delete chat") {
@@ -248,7 +248,7 @@ const Chat = () => {
                 "Success",
                 "Your chat has been deleted successfully!"
             );
-            history.push("/");
+            history.push("/Social-Chatbot-Project-Frontend");
             return;
         }
         setMessageList([...messageList, newMessage]);
@@ -344,9 +344,9 @@ const Chat = () => {
                             setShowSuggModal(true);
                             localStorage.setItem("currQuestionnaireSC", JSON.stringify(copyCurrQuestionnaire));
                             localStorage.setItem("currQnaSC", JSON.stringify(copyCurrQna));
-                            history.push("/dashboard");
+                            history.push("/Social-Chatbot-Project-Frontend/dashboard");
                         } else {
-                            history.push("/");
+                            history.push("/Social-Chatbot-Project-Frontend");
                             return;
                         }
                     });

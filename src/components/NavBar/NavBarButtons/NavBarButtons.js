@@ -41,7 +41,7 @@ const NavBarButtons = () => {
         setUser(null);
         setCurrQuestionnaire([]);
         handleClose();
-        history.push("/");
+        history.push("/Social-Chatbot-Project-Frontend");
     }
 
     return (

@@ -60,7 +60,7 @@ const QuestionnaireModal = () => {
                 typeof res.errors === "string" ? res.errors : res.errors[0].msg
             );
             // console.log("res.errors", res.errors);
-            history.push("/");
+            history.push("/Social-Chatbot-Project-Frontend");
         }
     };
 
@@ -141,7 +141,7 @@ const QuestionnaireModal = () => {
         setShowQuesModal(false);
         setQuestionnaireId("");
         setQuestionAnswer([]);
-        history.push("/dashboard");
+        history.push("/Social-Chatbot-Project-Frontend/dashboard");
     };
 
     const handleDelete = async()=> {
