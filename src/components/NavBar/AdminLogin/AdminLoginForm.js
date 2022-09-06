@@ -38,7 +38,7 @@ const AdminLoginForm = () => {
               showAlrtState("Success", "Dear admin, you have successfully login!");
               localStorage.setItem('authTokenSC', res.authToken);
               setCredCxt(true);
-              history.push("/Social-Chatbot-Project-Frontend");
+              history.push("/");
             }
             else{
                 showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);

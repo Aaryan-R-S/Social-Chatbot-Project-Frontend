@@ -60,7 +60,7 @@ const QuestionnaireModal = () => {
                 typeof res.errors === "string" ? res.errors : res.errors[0].msg
             );
             // console.log("res.errors", res.errors);
-            history.push("/Social-Chatbot-Project-Frontend");
+            history.push("/");
         }
     };
 
@@ -141,7 +141,7 @@ const QuestionnaireModal = () => {
         setShowQuesModal(false);
         setQuestionnaireId("");
         setQuestionAnswer([]);
-        history.push("/Social-Chatbot-Project-Frontend/dashboard");
+        history.push("/dashboard");
     };
 
     const handleDelete = async()=> {
@@ -167,7 +167,7 @@ const QuestionnaireModal = () => {
             );
             // console.log("res.errors", res.errors);
         }
-        window.location.href = '/Social-Chatbot-Project-Frontend/dashboard';
+        window.location.href = '/dashboard';
     }
 
     const handleTakeAppointment = async () => {

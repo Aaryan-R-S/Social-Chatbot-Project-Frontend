@@ -39,7 +39,7 @@ const LoginForm = () => {
               localStorage.setItem('authTokenSC', res.authToken);
               setCredCxt(true);
               checkCredAuthToken();
-              history.push("/Social-Chatbot-Project-Frontend");
+              history.push("/");
             }
             else{
                 showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);

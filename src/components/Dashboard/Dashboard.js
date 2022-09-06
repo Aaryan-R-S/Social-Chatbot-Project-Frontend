@@ -77,7 +77,7 @@ const Dashboard = () => {
     useLayoutEffect(() => {
         if (localStorage.getItem("authTokenSC")) {
             if (checkCredAuthToken().success === false) {
-                history.push("/Social-Chatbot-Project-Frontend");
+                history.push("/");
                 setTimeout(() => {
                     setShowLoginModal(true);
                 }, 3000);
@@ -87,7 +87,7 @@ const Dashboard = () => {
                 initFunc();
             }
         } else {
-            history.push("/Social-Chatbot-Project-Frontend");
+            history.push("/");
             showAlrtState(
                 "Warning",
                 "Dear user, please login to see your dashboard!"

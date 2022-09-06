@@ -40,7 +40,7 @@ const SuggestionModal = () => {
         localStorage.removeItem("currQnaSC");
         localStorage.removeItem("currSuggestionsSC");
         localStorage.removeItem("currVideosSC");
-        history.push("/Social-Chatbot-Project-Frontend/dashboard");
+        history.push("/dashboard");
     };
 
     const handleSendSuggestionsOverMail = async () => {
@@ -85,14 +85,14 @@ const SuggestionModal = () => {
         // console.log(res);
         if (res.success) {
             showAlrtState("Success", res.message);
-            history.push("/Social-Chatbot-Project-Frontend/dashboard");
+            history.push("/dashboard");
         } else {
             showAlrtState(
                 "Warning",
                 typeof res.errors === "string" ? res.errors : res.errors[0].msg
             );
             // console.log("res.errors", res.errors);
-            history.push("/Social-Chatbot-Project-Frontend/dashboard");
+            history.push("/dashboard");
         }
         handleClose();
     };

@@ -11,7 +11,7 @@ const NavBar = () => {
         <Navbar collapseOnSelect expand="lg" className={styles['bg']}>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Container className={styles['bg']}>
-                <Navbar.Brand to="/Social-Chatbot-Project-Frontend" as={Link} className={styles['navbar-brand']}>
+                <Navbar.Brand to="/" as={Link} className={styles['navbar-brand']}>
                     <img src={brandIcon} alt={"Brand Icon"} height="10%" width="10%" style={{marginRight : '5%'}}/>
                       Social Chatbot
                 </Navbar.Brand>
@@ -27,31 +27,31 @@ const NavBar = () => {
                         );
                     })} */}
                     <Nav className={styles['navbar-item']}>
-                        <Nav.Link href={'/Social-Chatbot-Project-Frontend/chatbot'} >
+                        <Nav.Link href={'/chatbot'} >
                             Chatbot
                         </Nav.Link>
                     </Nav>
 
                     <NavDropdown title={<span className={styles['navbar-item']}> Resources </span>}>
                         <Nav className={styles['dropdown-item']}>
-                            <Nav.Link as={Link} to='/Social-Chatbot-Project-Frontend/videos'>
+                            <Nav.Link as={Link} to='videos'>
                                 Videos
                             </Nav.Link>
                         </Nav>
                         <Nav className={styles['dropdown-item']}>
-                            <Nav.Link as={Link} to='/Social-Chatbot-Project-Frontend/diet'>
+                            <Nav.Link as={Link} to='diet'>
                                 Diet
                             </Nav.Link>
                         </Nav>
                         <Nav className={styles['dropdown-item']}>
-                            <Nav.Link as={Link} to='/Social-Chatbot-Project-Frontend/exercise'>
+                            <Nav.Link as={Link} to='exercise'>
                                 Exercises
                             </Nav.Link>
                         </Nav>
                     </NavDropdown>
 
                     <Nav className={styles['navbar-item']}>
-                        <Nav.Link as={Link} to={'/Social-Chatbot-Project-Frontend/dashboard'}>
+                        <Nav.Link as={Link} to={'dashboard'}>
                             Dashboard
                         </Nav.Link>
                     </Nav>

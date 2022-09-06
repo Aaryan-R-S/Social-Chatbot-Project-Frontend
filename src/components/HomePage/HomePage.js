@@ -63,7 +63,7 @@ const HomePage = () => {
                 <Row style={{margin :"5%"}}>
                     <Col>
                         <Button 
-                            as={Link} to='/Social-Chatbot-Project-Frontend/terms'
+                            as={Link} to='terms'
                             size="lg" 
                             style={hover1?modalButtonStyleHover:modalButtonStyle} 
                             onMouseOver={handleMouseIn1} onMouseOut={handleMouseOut1}
@@ -71,7 +71,7 @@ const HomePage = () => {
                     </Col>
                     <Col>
                         <Button 
-                            as={Link} to='/Social-Chatbot-Project-Frontend/policy'
+                            as={Link} to='policy'
                             size="lg" 
                             style={hover2?modalButtonStyleHover:modalButtonStyle} 
                             onMouseOver={handleMouseIn2} onMouseOut={handleMouseOut2}

@@ -1,11 +1,11 @@
 export const MenuItems = [
     {
         'title' : 'Chatbot',
-        'url' : '/Social-Chatbot-Project-Frontend/chatbot',
+        'url' : '/chatbot',
     },
     {
         'title' : 'My Dashboard',
-        'url' : '/Social-Chatbot-Project-Frontend/dashboard',
+        'url' : '/dashboard',
     }
 ];
 
