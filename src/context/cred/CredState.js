@@ -10,6 +10,7 @@ const CredState = (props) => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSuggModal, setShowSuggModal] = useState(false);
     const [showQuesModal, setShowQuesModal] = useState(false);
+    const [showSpinner, setShowSpinner] = useState(false);
     const [user, setUser] = useState({});
     const [isAdmin, setIsAdmin] = useState(false);
     const [currQuestionnaire, setCurrQuestionnaire] = useState([]);
@@ -152,6 +153,8 @@ const CredState = (props) => {
                 setVideos,
                 questionnaireId,
                 setQuestionnaireId,
+                showSpinner,
+                setShowSpinner
             }}
         >
             {props.children}

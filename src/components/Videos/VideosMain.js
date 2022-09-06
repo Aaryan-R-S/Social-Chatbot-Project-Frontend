@@ -3,8 +3,6 @@ import { Dropdown, Container, Row, Col } from 'react-bootstrap';
 import Spinner from '../Spinner/Spinner';
 import VideoRow from './VideoRow';
 
-// Set API alongwith database
-
 const VideosMain = () => {
     const [videosList, setVideosList] = useState([]);
     const [dropDownText, setDropDownText] = useState('Select Category');

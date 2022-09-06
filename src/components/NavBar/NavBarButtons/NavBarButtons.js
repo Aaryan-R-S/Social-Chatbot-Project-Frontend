@@ -7,9 +7,6 @@ import SignUpForm from '../SignUpForm/SignUpForm.js';
 import AdminLoginForm from '../AdminLogin/AdminLoginForm.js';
 import credContext from '../../../context/cred/credContext.js';
 
-// If login show name as button which will redirect to see questionnaires along with logout option
-// else show login/signup button
-
 const NavBarButtons = () => {
     let history = useHistory();
 

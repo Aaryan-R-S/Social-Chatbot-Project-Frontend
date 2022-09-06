@@ -11,12 +11,6 @@ const Exercise = () => {
         'Deep Breathing',
         'Surya Namaskar'
     ]
-    
-    // const resources = [
-    //     'https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/stretching/art-20047931',
-    //     'https://timesofindia.indiatimes.com/life-style/health-fitness/fitness/advantages-of-deep-breathing-exercises/articleshow/19213960.cms',
-    //     'https://www.artofliving.org/in-en/yoga/yoga-benefits/sun-salutation-benefits'
-    // ]
 
     const content = [
         'Research has shown that stretching can help improve flexibility, and, consequently, the range of motion of your joints. Better flexibility may: Improve your performance in physical activities, Decrease your risk of injuries, Help your joints move through their full range of motion, Enable your muscles to work most effectively',

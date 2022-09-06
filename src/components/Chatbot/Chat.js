@@ -10,8 +10,6 @@ import { useHistory } from "react-router-dom";
 import credContext from "../../context/cred/credContext.js";
 import sytlesSheet from "./chat.css";
 
-// store and display suggestions at the end of the chat
-
 const Chat = () => {
     const history = useHistory();
     const context = useContext(credContext);

@@ -13,9 +13,6 @@ import Chat from './components/Chatbot/Chat.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
 import VideosMain from './components/Videos/VideosMain.js';
 import Alert from './components/NavBar/Alert/Alert';
-// import Admin from './components/Admin/Admin.js';
-
-// Responsiveness
 
 function App() {
   
@@ -52,9 +49,6 @@ function App() {
             <Route exact path='/dashboard'>
               <Dashboard/>
             </Route>
-            {/* <Route exact path='/admin'>
-              <Admin/>
-            </Route> */}
           </Switch>
         </Fragment>
       </Router>

@@ -5,9 +5,11 @@ import {
     Modal,
     Container,
     Row,
-    Col,
+    Col
 } from "react-bootstrap";
 import credContext from "../../../context/cred/credContext.js";
+import Spinner from "../../Spinner/Spinner.js";
+
 const QuestionnaireModal = () => {
     let history = useHistory();
 
@@ -159,7 +161,7 @@ const QuestionnaireModal = () => {
         const res = await response.json();
         // console.log(res);
         if (res.success) {
-            // showAlrtState("Success", res.message);
+            showAlrtState("Success", res.message);
         } else {
             showAlrtState(
                 "Warning",
@@ -185,7 +187,7 @@ const QuestionnaireModal = () => {
         const res = await response.json();
         // console.log(res);
         if (res.success) {
-            // showAlrtState("Success", res.message);
+            showAlrtState("Success", res.message);
         } else {
             showAlrtState(
                 "Warning",
@@ -215,6 +217,7 @@ const QuestionnaireModal = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Container>
+                        {questionAnswer.length===0 && <Spinner/>}
                         {questionAnswer.map((s, i) => {
                             return (
                                 <Row key={i} style={{marginBottom: "2%"}}>

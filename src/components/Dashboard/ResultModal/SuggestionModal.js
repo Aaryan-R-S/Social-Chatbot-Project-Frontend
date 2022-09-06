@@ -109,7 +109,7 @@ const SuggestionModal = () => {
             .join("\n")}`;
         // console.log(copyText);
         navigator.clipboard.writeText(copyText);
-        // handleClose();
+        showAlrtState("Success", "Suggestions copied successfully");
     };
 
     return (
@@ -131,48 +131,6 @@ const SuggestionModal = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Container>
-                        {/* <Row>
-                            <Col>
-                                <Button
-                                    size="normal"
-                                    // onClick={()=>{handleClick("SignUp")}}
-                                    style={modalButtonStyle}
-                                    variant="default"
-                                >
-                                    Close
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button
-                                    size="normal"
-                                    // onClick={()=>{handleClick("Login")}}
-                                    style={modalButtonStyle}
-                                    variant="default"
-                                >
-                                    Copy it
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button
-                                    size="normal"
-                                    // onClick={()=>{handleClick("adminLogin")}}
-                                    style={modalButtonStyle}
-                                    variant="default"
-                                >
-                                    Send me over mail
-                                </Button>
-                            </Col>
-                            <Col>
-                                <Button
-                                    size="normal"
-                                    // onClick={()=>{handleClick("adminLogin")}}
-                                    style={modalButtonStyle}
-                                    variant="default"
-                                >
-                                    Take appointment from expert
-                                </Button>
-                            </Col>
-                        </Row> */}
                         <Row style={{fontSize:"2rem", fontWeight:"600"}}>
                             Suggestions:
                         </Row> 

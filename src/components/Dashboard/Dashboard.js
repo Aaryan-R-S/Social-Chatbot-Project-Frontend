@@ -115,11 +115,10 @@ const Dashboard = () => {
         <div>
             {showSuggModal && <SuggestionModal />}
             {showQuesModal && <QuestionnaireModal />}
-            {allQuestionnaires.length === 0 && "Nothing to show!"}
             {credCxt && user && (
                 <div
-                    style={{ margin: "1% 20%", fontSize: "1.5rem" }}
-                    className="d-grid"
+                style={{ margin: "1% 20%", fontSize: "1.5rem" }}
+                className="d-grid"
                 >
                     <div>
                         <b>Name:</b>&nbsp;{user.name}
@@ -129,6 +128,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             )}
+            {allQuestionnaires.length === 0 && <div style={{textAlign:"center", fontSize:"2rem"}}>Nothing to show!</div>}
             {allQuestionnaires.map((s, i) => {
                 return (
                     <div

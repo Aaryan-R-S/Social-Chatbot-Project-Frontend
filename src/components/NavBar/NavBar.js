@@ -1,7 +1,6 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; 
-// import { MenuItems } from './NavbarItems';
 import NavBarButtons from './NavBarButtons/NavBarButtons';
 import brandIcon from './images/robot-hand.png';
 
@@ -17,15 +16,6 @@ const NavBar = () => {
                 </Navbar.Brand>
 
                 <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-center'>
-                    {/* {MenuItems.map( (item, index) => {
-                        return (
-                            <Nav className={styles['navbar-item']} key={index}>
-                                <Nav.Link as={Link} to={item['url']}>
-                                    {item['title']}
-                                </Nav.Link>
-                            </Nav>
-                        );
-                    })} */}
                     <Nav className={styles['navbar-item']}>
                         <Nav.Link href={'/chatbot'} >
                             Chatbot

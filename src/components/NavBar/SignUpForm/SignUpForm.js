@@ -4,13 +4,9 @@ import { confidentialityEnsured } from '../../HomePage/HomePageContent.js';
 import { useHistory } from 'react-router-dom';
 import credContext from '../../../context/cred/credContext.js';
 
-// Make signup attempt
-// If successful show success toast and store authToken
-// else show failure toast with exact error and clear form
-
 const SignUpForm = () => {
     const context = useContext(credContext);
-    // console.log(context);
+
     // eslint-disable-next-line 
     const {url, credCxt, setCredCxt, showAlrtState, setShowLoginModal, checkCredAuthToken} = context;
 
@@ -24,7 +20,6 @@ const SignUpForm = () => {
         const name = event.target[0].value;
         const email = event.target[1].value;
         const password = event.target[2].value;
-        // console.log(name, email, password);
         setCredentials({name, email, password})
 
         const response = await fetch(`${url}/api/auth/addUser`, {
@@ -35,7 +30,7 @@ const SignUpForm = () => {
             body: JSON.stringify({name, email, password})
           });
           const res = await response.json();
-        //   console.log(res);
+
           if(res.success){
               showAlrtState("Success", "Dear user, you have successfully signed in!");
               localStorage.setItem('authTokenSC', res.authToken);
@@ -46,7 +41,6 @@ const SignUpForm = () => {
             else{
                 showAlrtState("Warning", typeof res.errors === 'string'? res.errors:res.errors[0].msg);
                 setCredCxt(false);
-                //   alert(typeof res.errors === 'string'? res.errors:res.errors[0].msg);
             }
             setShowLoginModal(false);
     };
