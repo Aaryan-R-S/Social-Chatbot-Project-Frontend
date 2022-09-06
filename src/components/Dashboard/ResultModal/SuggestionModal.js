@@ -137,6 +137,7 @@ const SuggestionModal = () => {
                         {suggestions.map((s, i) => {
                             return (<Row key={i}>{i + 1}. {s}</Row>);
                         })}
+                        {suggestions.length===0 && <Row>Nothing to recommend.</Row>}
                         <Row style={{ marginTop: "1%" }}></Row>
                         <Row style={{fontSize:"2rem", fontWeight:"600"}}>
                             Videos:
@@ -144,6 +145,7 @@ const SuggestionModal = () => {
                         {videos.map((v, i) => {
                             return (<Row key={i+suggestions.length}><a href={v} target="_blank" rel="noreferrer" style={{textDecoration:"none"}}>{i + 1}. {v}</a></Row>);
                         })}
+                        {videos.length===0 && <Row>Nothing to recommend.</Row>}
                         <Row style={{ marginTop: "5%" }}></Row>
                     </Container>
                 </Modal.Body>

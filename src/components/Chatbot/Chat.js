@@ -9,6 +9,7 @@ import "react-chat-widget/lib/styles.css";
 import { useHistory } from "react-router-dom";
 import credContext from "../../context/cred/credContext.js";
 import sytlesSheet from "./chat.css";
+import Spinner from "../Spinner/Spinner";
 
 const Chat = () => {
     const history = useHistory();
@@ -30,6 +31,8 @@ const Chat = () => {
         videos,
         setVideos,
         setQuestionnaireId,
+        showSpinner,
+        setShowSpinner
     } = context;
     //eslint-disable-next-line
     const [messageList, setMessageList] = useState([]);
@@ -335,19 +338,23 @@ const Chat = () => {
                     else{
                         localStorage.setItem("currVideosSC", JSON.stringify(videos));
                     }
-                    saveQuestionnaire(copyCurrQuestionnaire).then((res2) => {
-                        // console.log("res2", res2);
-                        if (res2.success) {
-                            setQuestionnaireId(res2.questionnaireId);
-                            setShowSuggModal(true);
-                            localStorage.setItem("currQuestionnaireSC", JSON.stringify(copyCurrQuestionnaire));
-                            localStorage.setItem("currQnaSC", JSON.stringify(copyCurrQna));
-                            history.push("/dashboard");
-                        } else {
-                            history.push("/");
-                            return;
-                        }
-                    });
+                    addResponseMessage("Thanks for sumbitting the questionnaire. \nRecommending you some solutions and helpful videos...")
+                    setShowSpinner(true);
+                    setTimeout(() => {
+                        saveQuestionnaire(copyCurrQuestionnaire).then((res2) => {
+                            // console.log("res2", res2);
+                            if (res2.success) {
+                                setQuestionnaireId(res2.questionnaireId);
+                                setShowSuggModal(true);
+                                localStorage.setItem("currQuestionnaireSC", JSON.stringify(copyCurrQuestionnaire));
+                                localStorage.setItem("currQnaSC", JSON.stringify(copyCurrQna));
+                                history.push("/dashboard");
+                            } else {
+                                history.push("/");
+                                return;
+                            }
+                        });
+                    }, 2000);
                 } else {
                     getOptionsString(res.myNextQuestion.answers).then(
                         (res1) => {
@@ -392,6 +399,7 @@ const Chat = () => {
 
     return (
         <div>
+            {showSpinner && <Spinner/>}
             {credCxt && (
                 <Widget
                     className={sytlesSheet}
