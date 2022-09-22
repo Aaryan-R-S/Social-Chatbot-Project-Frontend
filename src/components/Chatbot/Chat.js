@@ -79,11 +79,13 @@ const Chat = () => {
         let retString = "";
         for (let index = 0; index < answersArr.length; index++) {
             const element = answersArr[index];
-            retString += "/" + element;
+            // retString += "/" + element;
+            retString += (index).toString()+" - "+element+", "
         }
-        retString += ")";
+        // retString += ")";
         // console.log(retString);
-        return "(" + retString.substring(1);
+        // return "(" + retString.substring(1);
+        return "(" + retString.substring(0, retString.length-2)+")";
     };
 
     const fetchQuestionTxtById = async (uniqueid, answerid) => {
@@ -269,14 +271,18 @@ const Chat = () => {
         // console.log(posAnswers);
         // use NLP here
         posAnswers = posAnswers.myCurrQuestionResults.answers;
-        for (let index = 0; index < posAnswers.length; index++) {
-            const element = posAnswers[index];
-            if (newMessage.toLowerCase() === element.toLowerCase()) {
-                answerid = index.toString();
-                // console.log("got matched with some options");
-                break;
-            }
+        if(newMessage>='0' && newMessage<posAnswers.length.toString()){
+            answerid = newMessage;
+            newMessage = posAnswers[parseInt(newMessage)];
         }
+        // for (let index = 0; index < posAnswers.length; index++) {
+        //     const element = posAnswers[index];
+        //     if (newMessage.toLowerCase() === element.toLowerCase()) {
+        //         answerid = index.toString();
+        //         // console.log("got matched with some options");
+        //         break;
+        //     }
+        // }
         copyCurrQuestionnaire.push({
             questionid: currQuestionnaire[currQuestionnaire.length - 1].questionid,
             answer: newMessage,
