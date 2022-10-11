@@ -8,6 +8,7 @@ import Terms from './components/References/Terms/Terms.js'
 import Policy from './components/References/Policy/Policy.js'
 import Diet from './components/Recommender/Diet/Diet.js';
 import Exercise from './components/Recommender/Exercise/Exercise.js';
+import Spiritual from './components/Recommender/Spiritual/Spiritual.js';
 import ScrollToTop from './ScrollToTop.js';
 import Chat from './components/Chatbot/Chat.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route exact path='/exercise'>
               <Exercise/>
+            </Route>
+            <Route exact path='/spiritual'>
+              <Spiritual/>
             </Route>
             <Route exact path='/dashboard'>
               <Dashboard/>

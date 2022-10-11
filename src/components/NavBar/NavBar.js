@@ -38,6 +38,11 @@ const NavBar = () => {
                                 Exercises
                             </Nav.Link>
                         </Nav>
+                        <Nav className={styles['dropdown-item']}>
+                            <Nav.Link as={Link} to='spiritual'>
+                                Spiritual Texts
+                            </Nav.Link>
+                        </Nav>
                     </NavDropdown>
 
                     <Nav className={styles['navbar-item']}>
