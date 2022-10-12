@@ -271,7 +271,7 @@ const Chat = () => {
         // console.log(posAnswers);
         // use NLP here
         posAnswers = posAnswers.myCurrQuestionResults.answers;
-        if(newMessage>='0' && newMessage<posAnswers.length.toString()){
+        if(newMessage>='0' && parseInt(newMessage)<posAnswers.length){
             answerid = newMessage;
             newMessage = posAnswers[parseInt(newMessage)];
         }
