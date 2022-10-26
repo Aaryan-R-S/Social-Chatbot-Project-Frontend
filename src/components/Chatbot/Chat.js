@@ -80,12 +80,12 @@ const Chat = () => {
         for (let index = 0; index < answersArr.length; index++) {
             const element = answersArr[index];
             // retString += "/" + element;
-            retString += (index).toString()+" - "+element+", "
+            retString += "("+(index+1).toString()+") "+element+" "
         }
         // retString += ")";
         // console.log(retString);
         // return "(" + retString.substring(1);
-        return "(" + retString.substring(0, retString.length-2)+")";
+        return retString;
     };
 
     const fetchQuestionTxtById = async (uniqueid, answerid) => {
@@ -219,6 +219,54 @@ const Chat = () => {
         // console.log("currQuestionnaire ", currQuestionnaire);
     };
 
+    const max = (a, b) =>{
+        if (a > b)
+            return a;
+        else
+            return b;
+    }
+  
+    const lcs = (X, Y, m, n) =>{
+        var L = new Array(m + 1);
+        for(var i = 0; i < L.length; i++){
+            L[i] = new Array(n + 1);
+        }
+        // eslint-disable-next-line
+        var i, j;
+        
+        /* Following steps build L[m+1][n+1] in
+        bottom up fashion. Note that L[i][j]
+        contains length of LCS of X[0..i-1]
+        and Y[0..j-1] */
+        for(i = 0; i <= m; i++){
+            for(j = 0; j <= n; j++){
+                if (i === 0 || j === 0)
+                    L[i][j] = 0;
+                else if (X[i - 1] === Y[j - 1])
+                    L[i][j] = L[i - 1][j - 1] + 1;
+                else
+                    L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+            }
+        }
+        
+        /* L[m][n] contains length of LCS
+        for X[0..n-1] and Y[0..m-1] */
+        return L[m][n];
+    }
+  
+    const getMostSuitableMatch = (posAnswers, newMessage) => {
+        let ansIdx = -1, maxLen = 0;
+        for (let index = 0; index < posAnswers.length; index++) {
+            const elem = posAnswers[index];
+            let currLen = lcs(elem.toLowerCase(), newMessage.toLowerCase(), elem.length, newMessage.length);
+            if(currLen>=1 && currLen>maxLen){
+                maxLen = currLen;
+                ansIdx = index;
+            }
+        }
+        return ansIdx;
+    };
+
     const handleNewUserMessage = async (newMessage) => {
         // console.log("newMessage", newMessage);
         // console.log(questionAnswer);
@@ -268,21 +316,32 @@ const Chat = () => {
             currQuestionnaire[currQuestionnaire.length - 1].questionid,
             0
         );
-        // console.log(posAnswers);
-        // use NLP here
         posAnswers = posAnswers.myCurrQuestionResults.answers;
-        if(newMessage>='0' && parseInt(newMessage)<posAnswers.length){
-            answerid = newMessage;
-            newMessage = posAnswers[parseInt(newMessage)];
+        // console.log(posAnswers);
+        if(posAnswers.length!==0){
+            let mostSuitableMatch = getMostSuitableMatch(posAnswers, newMessage);
+            answerid = mostSuitableMatch.toString();
+            // if(mostSuitableMatch!==-1){
+                // newMessage = posAnswers[mostSuitableMatch];
+            // }
+            // console.log(answerid);
+            // console.log(newMessage);
+
+            // Version - 1.0
+            // if(newMessage>='0' && parseInt(newMessage)<posAnswers.length){
+                //     answerid = newMessage;
+                //     newMessage = posAnswers[parseInt(newMessage)];
+            // }
+            // Version - 2.0
+            // for (let index = 0; index < posAnswers.length; index++) {
+            //     const element = posAnswers[index];
+            //     if (newMessage.toLowerCase() === element.toLowerCase()) {
+            //         answerid = index.toString();
+            //         // console.log("got matched with some options");
+            //         break;
+            //     }
+            // }
         }
-        // for (let index = 0; index < posAnswers.length; index++) {
-        //     const element = posAnswers[index];
-        //     if (newMessage.toLowerCase() === element.toLowerCase()) {
-        //         answerid = index.toString();
-        //         // console.log("got matched with some options");
-        //         break;
-        //     }
-        // }
         copyCurrQuestionnaire.push({
             questionid: currQuestionnaire[currQuestionnaire.length - 1].questionid,
             answer: newMessage,

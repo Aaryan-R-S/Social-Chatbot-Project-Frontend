@@ -34,11 +34,13 @@ const QuestionnaireModal = () => {
         let retString = "";
         for (let index = 0; index < answersArr.length; index++) {
             const element = answersArr[index];
-            retString += "/" + element;
+            // retString += "/" + element;
+            retString += "("+(index+1).toString()+") "+element+" "
         }
-        retString += ")";
+        // retString += ")";
         // console.log(retString);
-        return "(" + retString.substring(1);
+        // return "(" + retString.substring(1);
+        return retString;
     };
   
     const fetchQuestionTxtById = async (uniqueid) => {

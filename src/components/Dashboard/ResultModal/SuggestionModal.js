@@ -135,7 +135,7 @@ const SuggestionModal = () => {
                             Suggestions:
                         </Row> 
                         {suggestions.map((s, i) => {
-                            return (<Row key={i}>{i + 1}. {s}</Row>);
+                            return (<Row key={i} style={{'whiteSpace':'pre-line'}}>{i + 1}. {s}</Row>);
                         })}
                         {suggestions.length===0 && <Row>Nothing to recommend.</Row>}
                         <Row style={{ marginTop: "1%" }}></Row>
