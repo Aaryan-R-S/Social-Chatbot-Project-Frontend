@@ -3,7 +3,8 @@ import CredContext from "./credContext.js";
 
 const CredState = (props) => {
     // const url = "http://localhost:5000";
-    const url = "https://social-chatbot-backend-iiitd.herokuapp.com";
+    // const url = "https://social-chatbot-backend-iiitd.herokuapp.com";
+    const url = "https://social-chatbot-a.onrender.com";
 
     // eslint-disable-next-line
     const [credCxt, setCredCxt] = useState(false);
